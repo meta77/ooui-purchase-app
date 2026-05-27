@@ -14,7 +14,7 @@
               exact-active-class="text-black"
               :class="[ $route.path.startsWith('/purchases') ? 'text-black' : 'text-gray-500 hover:text-gray-900' ]"
             >
-              仕入れ (Purchases)
+              仕入れ
             </router-link>
             <router-link
               to="/products"
@@ -23,7 +23,7 @@
               exact-active-class="text-black"
               :class="[ $route.path.startsWith('/products') ? 'text-black' : 'text-gray-500 hover:text-gray-900' ]"
             >
-              商品 (Products)
+              商品
             </router-link>
           </nav>
         </div>
