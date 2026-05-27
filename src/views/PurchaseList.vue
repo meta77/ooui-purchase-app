@@ -14,35 +14,36 @@
         :to="{ name: 'PurchaseDetail', params: { id: purchase.id } }"
         class="block group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300"
       >
+        <!-- Mobile -->
         <div class="flex flex-col gap-4 sm:hidden">
-          <div>
-            <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Purchase ID</p>
-            <p class="mt-1 text-lg font-semibold text-gray-900">{{ purchase.id }}</p>
-          </div>
-          <div class="flex items-center justify-between">
+          <div class="flex items-start justify-between">
             <div>
               <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Date</p>
-              <p class="mt-1 text-sm text-gray-700">{{ purchase.date }}</p>
+              <p class="mt-1 text-xl font-bold text-gray-900">{{ purchase.date }}</p>
             </div>
             <div class="text-right">
               <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Total</p>
-              <p class="mt-1 text-lg font-semibold text-gray-900">¥{{ formatPrice(purchase.total) }}</p>
+              <p class="mt-1 text-lg font-bold text-gray-900">¥{{ formatPrice(purchase.total) }}</p>
             </div>
+          </div>
+          <div>
+            <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-[10px] font-medium text-gray-500 ring-1 ring-inset ring-gray-500/10">
+              ID: {{ purchase.id }}
+            </span>
           </div>
         </div>
 
+        <!-- Desktop -->
         <div class="hidden items-center justify-between sm:flex">
-          <div class="min-w-0 flex-1">
-            <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Purchase ID</p>
-            <p class="mt-1 truncate text-lg font-semibold text-gray-900">{{ purchase.id }}</p>
-          </div>
-          <div class="w-48">
+          <div class="flex-1">
             <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Date</p>
-            <p class="mt-1 text-sm text-gray-700">{{ purchase.date }}</p>
+            <p class="mt-1 text-xl font-bold text-gray-900">{{ purchase.date }}</p>
+            <p class="mt-1.5 text-xs font-medium text-gray-400 font-mono">ID: {{ purchase.id }}</p>
           </div>
-          <div class="w-40 text-right">
-            <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Total</p>
-            <p class="mt-1 text-lg font-semibold text-gray-900">¥{{ formatPrice(purchase.total) }}</p>
+
+          <div class="w-48 text-right px-8 border-l border-gray-100">
+            <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Total Amount</p>
+            <p class="mt-1 text-2xl font-bold text-gray-900">¥{{ formatPrice(purchase.total) }}</p>
           </div>
         </div>
       </router-link>

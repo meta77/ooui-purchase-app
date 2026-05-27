@@ -9,20 +9,20 @@
         仕入れ一覧へ戻る
       </router-link>
       
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-        <div>
-          <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Purchase ID</p>
-          <h2 class="mt-1 text-2xl font-bold text-gray-900">{{ purchase.id }}</h2>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-white p-8 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+        <div class="flex-1">
+          <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Date</p>
+          <h2 class="mt-1 text-3xl font-extrabold text-gray-900 tracking-tight">{{ purchase.date }}</h2>
+          <div class="mt-3">
+            <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-mono font-medium text-gray-500 ring-1 ring-inset ring-gray-500/10">
+              ID: {{ purchase.id }}
+            </span>
+          </div>
         </div>
-        <div class="flex flex-col sm:flex-row gap-6 sm:gap-12">
-          <div>
-            <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Date</p>
-            <p class="mt-1 text-base text-gray-700">{{ purchase.date }}</p>
-          </div>
-          <div>
-            <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Total Amount</p>
-            <p class="mt-1 text-2xl font-bold text-gray-900">¥{{ formatPrice(purchase.total) }}</p>
-          </div>
+        
+        <div class="sm:text-right sm:pl-12 sm:border-l sm:border-gray-100">
+          <p class="text-xs font-medium uppercase tracking-wide text-gray-400">Total Amount</p>
+          <p class="mt-1 text-3xl font-extrabold text-gray-900">¥{{ formatPrice(purchase.total) }}</p>
         </div>
       </div>
     </div>
