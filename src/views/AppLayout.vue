@@ -10,14 +10,14 @@
             <router-link
               to="/purchases"
               class="text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200"
-              :class="[ $route.path.startsWith('/purchases') ? 'bg-black text-white shadow-md' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900' ]"
+              :class="[ $route.path.startsWith('/purchases') ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900' ]"
             >
               仕入れ
             </router-link>
             <router-link
               to="/products"
               class="text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200"
-              :class="[ $route.path.startsWith('/products') ? 'bg-black text-white shadow-md' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900' ]"
+              :class="[ $route.path.startsWith('/products') ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900' ]"
             >
               商品
             </router-link>
