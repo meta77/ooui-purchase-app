@@ -6,22 +6,18 @@
           <h1 class="text-xl font-bold text-gray-900 tracking-tight">
             OOUI Purchases
           </h1>
-          <nav class="flex gap-4 border-l border-gray-200 pl-6">
+          <nav class="flex gap-2 border-l border-gray-100 pl-6 ml-2">
             <router-link
               to="/purchases"
-              class="text-sm font-medium transition-colors"
-              active-class="text-black"
-              exact-active-class="text-black"
-              :class="[ $route.path.startsWith('/purchases') ? 'text-black' : 'text-gray-500 hover:text-gray-900' ]"
+              class="text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200"
+              :class="[ $route.path.startsWith('/purchases') ? 'bg-black text-white shadow-md' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900' ]"
             >
               仕入れ
             </router-link>
             <router-link
               to="/products"
-              class="text-sm font-medium transition-colors"
-              active-class="text-black"
-              exact-active-class="text-black"
-              :class="[ $route.path.startsWith('/products') ? 'text-black' : 'text-gray-500 hover:text-gray-900' ]"
+              class="text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200"
+              :class="[ $route.path.startsWith('/products') ? 'bg-black text-white shadow-md' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900' ]"
             >
               商品
             </router-link>
