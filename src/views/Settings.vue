@@ -39,7 +39,8 @@ onMounted(() => {
 })
 
 const toggleDarkMode = () => {
-  const newDarkMode = !isDarkMode.value
+  const currentStatus = document.documentElement.classList.contains('dark')
+  const newDarkMode = !currentStatus
   isDarkMode.value = newDarkMode
   
   if (newDarkMode) {
