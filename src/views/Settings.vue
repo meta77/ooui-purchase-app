@@ -34,12 +34,15 @@ import { ref, onMounted } from 'vue'
 const isDarkMode = ref(false)
 
 onMounted(() => {
+  // Initialize from document state
   isDarkMode.value = document.documentElement.classList.contains('dark')
 })
 
 const toggleDarkMode = () => {
-  isDarkMode.value = !isDarkMode.value
-  if (isDarkMode.value) {
+  const newDarkMode = !isDarkMode.value
+  isDarkMode.value = newDarkMode
+  
+  if (newDarkMode) {
     document.documentElement.classList.add('dark')
     localStorage.setItem('theme', 'dark')
   } else {
