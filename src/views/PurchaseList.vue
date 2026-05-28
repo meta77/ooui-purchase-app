@@ -12,7 +12,7 @@
         v-for="purchase in purchases"
         :key="purchase.id"
         :to="{ name: 'PurchaseDetail', params: { id: purchase.id } }"
-        class="block group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300"
+        class="block group rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700"
       >
         <!-- Mobile -->
         <div class="flex flex-col gap-4 sm:hidden">

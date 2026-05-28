@@ -5,6 +5,7 @@ const PurchaseList = () => import('./views/PurchaseList.vue')
 const PurchaseDetail = () => import('./views/PurchaseDetail.vue')
 const ProductList = () => import('./views/ProductList.vue')
 const ProductDetail = () => import('./views/ProductDetail.vue')
+const Settings = () => import('./views/Settings.vue')
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -18,6 +19,7 @@ export const router = createRouter({
         { path: 'purchases/:id', component: PurchaseDetail, name: 'PurchaseDetail' },
         { path: 'products', component: ProductList, name: 'ProductList' },
         { path: 'products/:id', component: ProductDetail, name: 'ProductDetail' },
+        { path: 'settings', component: Settings, name: 'Settings' },
       ]
     }
   ]
