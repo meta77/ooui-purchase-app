@@ -5,6 +5,14 @@
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Purchase List</h2>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">仕入れ一覧</p>
       </div>
+      <div>
+        <router-link to="/purchases/new" class="inline-flex items-center gap-1.5 px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-sm font-medium rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors shadow-sm cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          新規追加
+        </router-link>
+      </div>
     </div>
     
     <div class="space-y-4">
