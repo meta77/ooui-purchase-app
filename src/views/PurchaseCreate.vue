@@ -27,7 +27,7 @@
             <div class="flex-1 w-full">
               <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Product</label>
               <select v-model="item.productId" class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 outline-none transition-colors">
-                <option v-for="product in products" :key="product.id" :value="product.id">
+                <option v-for="product in getAvailableProducts(index)" :key="product.id" :value="product.id">
                   {{ product.name }} (¥{{ formatPrice(product.price) }})
                 </option>
               </select>
@@ -43,7 +43,7 @@
             </button>
           </div>
 
-          <button @click="addItem" class="mt-4 flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 transition-colors">
+          <button v-if="selectedItems.length < products.length" @click="addItem" class="mt-4 flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
             </svg>
@@ -88,8 +88,22 @@ const totalAmount = computed(() => {
   }, 0)
 })
 
+const getAvailableProducts = (currentIndex) => {
+  const otherSelectedIds = selectedItems.value
+    .filter((_, idx) => idx !== currentIndex)
+    .map(item => item.productId)
+  
+  return products.filter(product => !otherSelectedIds.includes(product.id))
+}
+
 const addItem = () => {
-  selectedItems.value.push({ productId: products[0].id, quantity: 1 })
+  // Find the first product ID that hasn't been selected yet
+  const selectedIds = selectedItems.value.map(item => item.productId)
+  const nextAvailableProduct = products.find(p => !selectedIds.includes(p.id))
+  
+  if (nextAvailableProduct) {
+    selectedItems.value.push({ productId: nextAvailableProduct.id, quantity: 1 })
+  }
 }
 
 const removeItem = (index) => {
