@@ -14,12 +14,12 @@
             >
               仕入れ
             </router-link>
-            <router-link
-              to="/products"
-              class="text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200"
-              :class="[ $route.path.startsWith('/products') ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white' ]"
-            >
+            <router-link to="/products" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200" :class="[ $route.path.startsWith('/products') ? 'bg-black text-white dark:bg-white dark:text-black shadow-md' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800' ]">
               商品
+            </router-link>
+            
+            <router-link to="/inventories" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200" :class="[ $route.path.startsWith('/inventories') ? 'bg-black text-white dark:bg-white dark:text-black shadow-md' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800' ]">
+              棚卸し
             </router-link>
           </nav>
         </div>
