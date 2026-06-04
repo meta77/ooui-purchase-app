@@ -24,6 +24,7 @@
       </div>
     </div>
 
+    <!-- Purchase History -->
     <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
       <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50 flex items-center justify-between">
         <h3 class="text-base font-semibold text-gray-900 dark:text-white">Purchase History (購入履歴)</h3>
@@ -57,6 +58,44 @@
       </div>
       <div v-else class="p-8 text-center text-sm text-gray-500">
         購入履歴はありません。
+      </div>
+    </div>
+
+    <!-- Inventory History -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50 flex items-center justify-between">
+        <h3 class="text-base font-semibold text-gray-900 dark:text-white">Inventory History (棚卸し履歴)</h3>
+        <span class="text-sm text-gray-500 dark:text-gray-400">{{ product.inventoryHistory.length }} records</span>
+      </div>
+      
+      <div v-if="product.inventoryHistory.length > 0" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <router-link
+          v-for="record in product.inventoryHistory"
+          :key="record.inventoryId"
+          :to="{ name: 'InventoryDetail', params: { id: record.inventoryId } }"
+          class="flex items-center justify-between p-6 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group"
+        >
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {{ record.inventory.year }}年 棚卸し
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ record.inventory.date }}</p>
+          </div>
+          <div class="flex items-center gap-8 text-right">
+            <div class="w-32">
+              <p class="text-xs text-gray-500 dark:text-gray-400">Stock Quantity</p>
+              <p class="text-sm font-medium text-gray-900 dark:text-white mt-0.5">{{ record.quantity }}</p>
+            </div>
+            <div class="w-16 flex justify-end text-gray-300 dark:text-gray-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        </router-link>
+      </div>
+      <div v-else class="p-8 text-center text-sm text-gray-500">
+        棚卸し履歴はありません。
       </div>
     </div>
   </div>
