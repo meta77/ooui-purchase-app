@@ -25,6 +25,25 @@ export const purchases = reactive([
   { id: 'P-10024', date: '2026/05/23', total: 5650 },
 ])
 
+export const inventories = reactive([
+  { id: 'INV-2024', year: 2024, date: '2024/12/31', total: 60500 },
+  { id: 'INV-2025', year: 2025, date: '2025/12/31', total: 54000 },
+])
+
+export const inventoryItems = reactive([
+  // INV-2024
+  { inventoryId: 'INV-2024', productId: 'PROD-001', quantity: 20 },
+  { inventoryId: 'INV-2024', productId: 'PROD-002', quantity: 15 },
+  { inventoryId: 'INV-2024', productId: 'PROD-003', quantity: 80 },
+  { inventoryId: 'INV-2024', productId: 'PROD-004', quantity: 5 },
+  
+  // INV-2025
+  { inventoryId: 'INV-2025', productId: 'PROD-001', quantity: 15 },
+  { inventoryId: 'INV-2025', productId: 'PROD-002', quantity: 10 },
+  { inventoryId: 'INV-2025', productId: 'PROD-003', quantity: 50 },
+  { inventoryId: 'INV-2025', productId: 'PROD-004', quantity: 10 },
+])
+
 export function getPurchaseDetails(purchaseId) {
   const purchase = purchases.find(p => p.id === purchaseId)
   if (!purchase) return null
@@ -96,4 +115,22 @@ export function addPurchase(date, items) {
   
   // Return the newly created ID to allow redirecting
   return id
+}
+
+export function getInventoryDetails(inventoryId) {
+  const inventory = inventories.find(inv => inv.id === inventoryId)
+  if (!inventory) return null
+
+  const items = inventoryItems
+    .filter(ii => ii.inventoryId === inventoryId)
+    .map(ii => {
+      const product = products.find(p => p.id === ii.productId)
+      return {
+        ...ii,
+        product,
+        subtotal: product.price * ii.quantity
+      }
+    })
+
+  return { ...inventory, items }
 }
