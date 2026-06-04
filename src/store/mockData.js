@@ -78,7 +78,19 @@ export function getProductDetails(productId) {
     // Sort by date descending
     .sort((a, b) => new Date(b.purchase.date) - new Date(a.purchase.date))
 
-  return { ...product, history }
+  const inventoryHistory = inventoryItems
+    .filter(ii => ii.productId === productId)
+    .map(ii => {
+      const inventory = inventories.find(inv => inv.id === ii.inventoryId)
+      return {
+        ...ii,
+        inventory
+      }
+    })
+    // Sort by date descending
+    .sort((a, b) => new Date(b.inventory.date) - new Date(a.inventory.date))
+
+  return { ...product, history, inventoryHistory }
 }
 
 export function formatPrice(value) {
