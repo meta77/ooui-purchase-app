@@ -33,14 +33,15 @@
       </div>
       
       <div class="divide-y divide-gray-200 dark:divide-gray-700">
-        <div
+        <router-link
           v-for="item in inventory.items"
           :key="item.productId"
-          class="flex flex-col sm:flex-row sm:items-center justify-between p-6 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors gap-4"
+          :to="{ name: 'ProductDetail', params: { id: item.productId } }"
+          class="flex flex-col sm:flex-row sm:items-center justify-between p-6 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors gap-4 group"
         >
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-1">
-              <p class="text-sm font-medium text-gray-900 dark:text-white">{{ item.product.name }}</p>
+              <p class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{{ item.product.name }}</p>
               <span class="text-xs text-gray-400 dark:text-gray-500 font-mono">{{ item.productId }}</span>
             </div>
             <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Unit Price: ¥{{ formatPrice(item.product.price) }}</p>
@@ -55,7 +56,7 @@
               <p class="text-base font-semibold text-gray-700 dark:text-gray-300 mt-1">¥{{ formatPrice(item.subtotal) }}</p>
             </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
