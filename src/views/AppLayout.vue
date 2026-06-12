@@ -21,6 +21,10 @@
             <router-link to="/inventories" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200" :class="[ $route.path.startsWith('/inventories') ? 'bg-black text-white dark:bg-white dark:text-black shadow-md' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800' ]">
               棚卸し
             </router-link>
+            
+            <router-link to="/reports" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200" :class="[ $route.path.startsWith('/reports') ? 'bg-black text-white dark:bg-white dark:text-black shadow-md' : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800' ]">
+              レポート
+            </router-link>
           </nav>
         </div>
 

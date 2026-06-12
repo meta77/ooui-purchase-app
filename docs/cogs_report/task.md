@@ -1,0 +1,7 @@
+- `[x]` `mockData.js`に`getReports()`と`getReportDetails(year)`関数を追加する
+- `[x]` `router.js`に`/reports`と`/reports/:year`のルーティングを追加する
+- `[x]` `AppLayout.vue`のナビゲーションに「レポート」へのリンクを追加する
+- `[x]` 年度ごとの売上原価を一覧表示する`ReportList.vue`を作成する
+- `[x]` 売上原価の計算過程を表示する`ReportDetail.vue`を作成する
+- `[x]` ブラウザエージェントを用いた動作確認を実施する
+- `[x]` ウォークスルー(`walkthrough.md`)を作成する
