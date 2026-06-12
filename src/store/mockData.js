@@ -129,6 +129,23 @@ export function addPurchase(date, items) {
   return id
 }
 
+export function addProduct(name, price) {
+  let nextId = 1
+  if (products.length > 0) {
+    const ids = products.map(p => parseInt(p.id.split('-')[1], 10))
+    nextId = Math.max(...ids) + 1
+  }
+  const id = `PROD-${String(nextId).padStart(3, '0')}`
+
+  products.push({
+    id,
+    name,
+    price
+  })
+  
+  return id
+}
+
 export function getInventoryDetails(inventoryId) {
   const inventory = inventories.find(inv => inv.id === inventoryId)
   if (!inventory) return null
