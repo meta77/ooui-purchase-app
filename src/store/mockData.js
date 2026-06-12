@@ -163,3 +163,38 @@ export function getInventoryDetails(inventoryId) {
 
   return { ...inventory, items }
 }
+
+export function getReports() {
+  const years = new Set()
+  purchases.forEach(p => {
+    years.add(new Date(p.date).getFullYear())
+  })
+  inventories.forEach(i => {
+    years.add(i.year)
+  })
+
+  return Array.from(years).sort().map(year => {
+    return getReportDetails(year)
+  })
+}
+
+export function getReportDetails(year) {
+  const previousInventory = inventories.find(i => i.year === year - 1)
+  const previousInventoryTotal = previousInventory ? previousInventory.total : 0
+
+  const currentPurchases = purchases.filter(p => new Date(p.date).getFullYear() === year)
+  const purchasesTotal = currentPurchases.reduce((sum, p) => sum + p.total, 0)
+
+  const currentInventory = inventories.find(i => i.year === year)
+  const currentInventoryTotal = currentInventory ? currentInventory.total : 0
+
+  const cogs = previousInventoryTotal + purchasesTotal - currentInventoryTotal
+
+  return {
+    year,
+    previousInventoryTotal,
+    purchasesTotal,
+    currentInventoryTotal,
+    cogs
+  }
+}

@@ -9,6 +9,8 @@ const ProductCreate = () => import('./views/ProductCreate.vue')
 const ProductDetail = () => import('./views/ProductDetail.vue')
 const InventoryList = () => import('./views/InventoryList.vue')
 const InventoryDetail = () => import('./views/InventoryDetail.vue')
+const ReportList = () => import('./views/ReportList.vue')
+const ReportDetail = () => import('./views/ReportDetail.vue')
 const Settings = () => import('./views/Settings.vue')
 
 export const router = createRouter({
@@ -27,6 +29,8 @@ export const router = createRouter({
         { path: 'products/:id', component: ProductDetail, name: 'ProductDetail' },
         { path: 'inventories', component: InventoryList, name: 'InventoryList' },
         { path: 'inventories/:id', component: InventoryDetail, name: 'InventoryDetail' },
+        { path: 'reports', component: ReportList, name: 'ReportList' },
+        { path: 'reports/:year', component: ReportDetail, name: 'ReportDetail' },
         { path: 'settings', component: Settings, name: 'Settings' },
       ]
     }
