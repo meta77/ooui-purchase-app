@@ -5,6 +5,12 @@
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Product List</h2>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">商品一覧</p>
       </div>
+      <router-link to="/products/new" class="inline-flex items-center gap-2 rounded-xl bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 transition-all shadow-sm hover:shadow dark:bg-white dark:text-black dark:hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+        New Product
+      </router-link>
     </div>
     
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
