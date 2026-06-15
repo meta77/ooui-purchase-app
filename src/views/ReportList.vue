@@ -40,7 +40,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { getReports, formatPrice } from '../store/mockData'
+import { getReports } from '../store/mockData'
+import { formatPrice } from '../utils/calculations'
 
 const router = useRouter()
 const reports = computed(() => getReports())

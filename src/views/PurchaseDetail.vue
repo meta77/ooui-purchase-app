@@ -73,7 +73,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { getPurchaseDetails, formatPrice } from '../store/mockData'
+import { getPurchaseDetails } from '../store/mockData'
+import { formatPrice } from '../utils/calculations'
 
 const route = useRoute()
 const purchase = computed(() => getPurchaseDetails(route.params.id))
