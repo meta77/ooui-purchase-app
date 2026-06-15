@@ -42,5 +42,6 @@
 </template>
 
 <script setup>
-import { products, formatPrice } from '../store/mockData'
+import { products } from '../store/mockData'
+import { formatPrice } from '../utils/calculations'
 </script>

@@ -69,7 +69,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { products, addPurchase, formatPrice } from '../store/mockData'
+import { products, addPurchase } from '../store/mockData'
+import { formatPrice, calculateTotalAmount } from '../utils/calculations'
 
 const router = useRouter()
 
@@ -82,10 +83,7 @@ const selectedItems = ref([
 ])
 
 const totalAmount = computed(() => {
-  return selectedItems.value.reduce((total, item) => {
-    const product = products.find(p => p.id === item.productId)
-    return total + (product ? product.price * item.quantity : 0)
-  }, 0)
+  return calculateTotalAmount(selectedItems.value, products)
 })
 
 const getAvailableProducts = (currentIndex) => {

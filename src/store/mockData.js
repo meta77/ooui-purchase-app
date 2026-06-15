@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import { calculateCOGS } from '../utils/calculations'
 
 export const products = reactive([
   { id: 'PROD-001', name: 'カーボンペン', price: 1200 },
@@ -184,9 +185,7 @@ export function getProductDetails(productId) {
   return { ...product, history, inventoryHistory }
 }
 
-export function formatPrice(value) {
-  return new Intl.NumberFormat('ja-JP').format(value)
-}
+
 
 export function addPurchase(date, items) {
   // Generate a new ID based on the highest existing ID
@@ -279,7 +278,7 @@ export function getReportDetails(year) {
   const currentInventory = inventories.find(i => i.year === year)
   const currentInventoryTotal = currentInventory ? currentInventory.total : 0
 
-  const cogs = previousInventoryTotal + purchasesTotal - currentInventoryTotal
+  const cogs = calculateCOGS(previousInventoryTotal, purchasesTotal, currentInventoryTotal)
 
   return {
     year,

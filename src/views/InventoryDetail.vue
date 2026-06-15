@@ -69,7 +69,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { getInventoryDetails, formatPrice } from '../store/mockData'
+import { getInventoryDetails } from '../store/mockData'
+import { formatPrice } from '../utils/calculations'
 
 const route = useRoute()
 const inventory = computed(() => getInventoryDetails(route.params.id))

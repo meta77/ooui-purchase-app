@@ -60,5 +60,6 @@
 </template>
 
 <script setup>
-import { purchases, formatPrice } from '../store/mockData'
+import { purchases } from '../store/mockData'
+import { formatPrice } from '../utils/calculations'
 </script>
