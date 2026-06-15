@@ -1,5 +1,6 @@
 import { reactive } from 'vue'
 import { calculateCOGS } from '../utils/calculations'
+import { generateNextId } from '../utils/idGenerator'
 
 export const products = reactive([
   { id: 'PROD-001', name: 'カーボンペン', price: 1200 },
@@ -188,13 +189,8 @@ export function getProductDetails(productId) {
 
 
 export function addPurchase(date, items) {
-  // Generate a new ID based on the highest existing ID
-  let nextId = 10025
-  if (purchases.length > 0) {
-    const ids = purchases.map(p => parseInt(p.id.split('-')[1], 10))
-    nextId = Math.max(...ids) + 1
-  }
-  const id = `P-${nextId}`
+  const existingIds = purchases.map(p => p.id)
+  const id = generateNextId(existingIds, 'P-', 10025)
 
   let total = 0
   items.forEach(item => {
@@ -220,12 +216,8 @@ export function addPurchase(date, items) {
 }
 
 export function addProduct(name, price) {
-  let nextId = 1
-  if (products.length > 0) {
-    const ids = products.map(p => parseInt(p.id.split('-')[1], 10))
-    nextId = Math.max(...ids) + 1
-  }
-  const id = `PROD-${String(nextId).padStart(3, '0')}`
+  const existingIds = products.map(p => p.id)
+  const id = generateNextId(existingIds, 'PROD-', 1, 3)
 
   products.push({
     id,
