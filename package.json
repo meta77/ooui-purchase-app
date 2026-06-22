@@ -7,15 +7,20 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "analyze": "node scripts/vue-analyzer/index.js"
   },
   "dependencies": {
     "vue": "^3.5.34"
   },
   "devDependencies": {
+    "@babel/parser": "^8.0.0",
+    "@babel/traverse": "^8.0.0",
     "@tailwindcss/vite": "^4.3.0",
     "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/compiler-sfc": "^3.5.38",
     "autoprefixer": "^10.5.0",
+    "glob": "^13.0.6",
     "postcss": "^8.5.15",
     "tailwindcss": "^4.3.0",
     "vite": "^8.0.12",
