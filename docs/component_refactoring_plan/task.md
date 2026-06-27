@@ -1,0 +1,10 @@
+- [x] 共通UIコンポーネントの作成
+  - [x] `src/components/ui/BaseCard.vue`
+  - [x] `src/components/ui/BaseButton.vue`
+- [x] ドメインコンポーネントの作成
+  - [x] `src/components/domain/purchase/PurchaseListItem.vue`
+  - [x] `src/components/domain/product/ProductListItem.vue`
+- [x] Viewコンポーネントのリファクタリング
+  - [x] `src/views/PurchaseList.vue`
+  - [x] `src/views/ProductList.vue`
+- [x] 分析ツールの実行 (`npm run analyze`) と結果確認
