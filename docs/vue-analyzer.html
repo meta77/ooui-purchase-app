@@ -317,46 +317,15 @@
     "apiType": "composition",
     "props": [],
     "emits": [],
-    "state": [
-      {
-        "name": "date",
-        "type": "ref"
-      },
-      {
-        "name": "selectedItems",
-        "type": "ref"
-      }
-    ],
-    "computed": [
-      {
-        "name": "totalAmount",
-        "dependencies": []
-      }
-    ],
-    "methods": [
-      {
-        "name": "getAvailableProducts",
-        "role": "Function"
-      },
-      {
-        "name": "addItem",
-        "role": "Function"
-      },
-      {
-        "name": "removeItem",
-        "role": "Function"
-      },
-      {
-        "name": "save",
-        "role": "Function"
-      }
-    ],
+    "state": [],
+    "computed": [],
+    "methods": [],
     "children": [
-      "router-link"
+      "BaseBackLink",
+      "BaseInput",
+      "PurchaseItemFormRow"
     ],
-    "stores": [
-      "../store/mockData"
-    ],
+    "stores": [],
     "error": null
   },
   {
@@ -507,6 +476,26 @@
     "error": null
   },
   {
+    "name": "BaseSection",
+    "path": "/Users/horokusa/明細　オブジェクト指向UI/src/components/ui/BaseSection.vue",
+    "apiType": "composition",
+    "props": [
+      {
+        "name": "title",
+        "type": "unknown",
+        "required": false,
+        "default": null
+      }
+    ],
+    "emits": [],
+    "state": [],
+    "computed": [],
+    "methods": [],
+    "children": [],
+    "stores": [],
+    "error": null
+  },
+  {
     "name": "BaseCard",
     "path": "/Users/horokusa/明細　オブジェクト指向UI/src/components/ui/BaseCard.vue",
     "apiType": "composition",
@@ -557,6 +546,28 @@
     "error": null
   },
   {
+    "name": "BaseBackLink",
+    "path": "/Users/horokusa/明細　オブジェクト指向UI/src/components/ui/BaseBackLink.vue",
+    "apiType": "composition",
+    "props": [
+      {
+        "name": "to",
+        "type": "unknown",
+        "required": false,
+        "default": null
+      }
+    ],
+    "emits": [],
+    "state": [],
+    "computed": [],
+    "methods": [],
+    "children": [
+      "router-link"
+    ],
+    "stores": [],
+    "error": null
+  },
+  {
     "name": "PurchaseListItem",
     "path": "/Users/horokusa/明細　オブジェクト指向UI/src/components/domain/purchase/PurchaseListItem.vue",
     "apiType": "composition",
@@ -574,6 +585,68 @@
     "methods": [],
     "children": [
       "BaseCard"
+    ],
+    "stores": [],
+    "error": null
+  },
+  {
+    "name": "PurchaseItemRow",
+    "path": "/Users/horokusa/明細　オブジェクト指向UI/src/components/domain/purchase/PurchaseItemRow.vue",
+    "apiType": "composition",
+    "props": [
+      {
+        "name": "item",
+        "type": "unknown",
+        "required": false,
+        "default": null
+      }
+    ],
+    "emits": [],
+    "state": [],
+    "computed": [],
+    "methods": [],
+    "children": [
+      "router-link"
+    ],
+    "stores": [],
+    "error": null
+  },
+  {
+    "name": "PurchaseItemFormRow",
+    "path": "/Users/horokusa/明細　オブジェクト指向UI/src/components/domain/purchase/PurchaseItemFormRow.vue",
+    "apiType": "composition",
+    "props": [
+      {
+        "name": "item",
+        "type": "unknown",
+        "required": false,
+        "default": null
+      },
+      {
+        "name": "availableProducts",
+        "type": "unknown",
+        "required": false,
+        "default": null
+      },
+      {
+        "name": "canRemove",
+        "type": "unknown",
+        "required": false,
+        "default": null
+      }
+    ],
+    "emits": [
+      {
+        "name": "remove",
+        "data": "unknown"
+      }
+    ],
+    "state": [],
+    "computed": [],
+    "methods": [],
+    "children": [
+      "BaseSelect",
+      "BaseInput"
     ],
     "stores": [],
     "error": null
@@ -597,6 +670,56 @@
     "children": [
       "BaseCard"
     ],
+    "stores": [],
+    "error": null
+  },
+  {
+    "name": "BaseSelect",
+    "path": "/Users/horokusa/明細　オブジェクト指向UI/src/components/ui/form/BaseSelect.vue",
+    "apiType": "composition",
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "unknown",
+        "required": false,
+        "default": null
+      }
+    ],
+    "emits": [
+      {
+        "name": "update:modelValue",
+        "data": "unknown"
+      }
+    ],
+    "state": [],
+    "computed": [],
+    "methods": [],
+    "children": [],
+    "stores": [],
+    "error": null
+  },
+  {
+    "name": "BaseInput",
+    "path": "/Users/horokusa/明細　オブジェクト指向UI/src/components/ui/form/BaseInput.vue",
+    "apiType": "composition",
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "unknown",
+        "required": false,
+        "default": null
+      }
+    ],
+    "emits": [
+      {
+        "name": "update:modelValue",
+        "data": "unknown"
+      }
+    ],
+    "state": [],
+    "computed": [],
+    "methods": [],
+    "children": [],
     "stores": [],
     "error": null
   }

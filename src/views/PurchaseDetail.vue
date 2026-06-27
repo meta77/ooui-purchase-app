@@ -1,13 +1,10 @@
 <template>
   <div class="space-y-6" v-if="purchase">
-    <!-- Back & Header (Object properties) -->
+    <!-- Back & Header -->
     <div class="space-y-4">
-      <router-link to="/purchases" class="inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
+      <BaseBackLink to="/purchases">
         仕入れ一覧へ戻る
-      </router-link>
+      </BaseBackLink>
       
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm relative overflow-hidden">
         <div class="flex-1">
@@ -28,41 +25,18 @@
     </div>
 
     <!-- Associated objects (Purchase Items) -->
-    <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
-      <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50 flex items-center justify-between">
-        <h3 class="text-base font-semibold text-gray-900 dark:text-white">Purchase Items (商品一覧)</h3>
+    <BaseSection title="Purchase Items (商品一覧)">
+      <template #header-right>
         <span class="text-sm text-gray-500 dark:text-gray-400">{{ purchase.items.length }} items</span>
-      </div>
+      </template>
       <div class="divide-y divide-gray-200 dark:divide-gray-700">
-        <router-link
+        <PurchaseItemRow
           v-for="item in purchase.items"
           :key="item.productId"
-          :to="{ name: 'ProductDetail', params: { id: item.productId } }"
-          class="flex items-center justify-between p-6 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group"
-        >
-          <div class="flex-1">
-            <p class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {{ item.product.name }}
-            </p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ item.productId }}</p>
-          </div>
-          <div class="flex items-center gap-8 text-right">
-            <div class="w-32 hidden sm:block">
-              <p class="text-xs text-gray-500 dark:text-gray-400">Unit Price</p>
-              <p class="text-sm text-gray-900 dark:text-white mt-0.5">¥{{ formatPrice(item.product.price) }}</p>
-            </div>
-            <div class="w-20">
-              <p class="text-xs text-gray-500 dark:text-gray-400">Qty</p>
-              <p class="text-sm font-medium text-gray-900 dark:text-white mt-0.5">{{ item.quantity }}</p>
-            </div>
-            <div class="w-32 hidden sm:block">
-              <p class="text-xs text-gray-500 dark:text-gray-400">Subtotal</p>
-              <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5">¥{{ formatPrice(item.subtotal) }}</p>
-            </div>
-          </div>
-        </router-link>
+          :item="item"
+        />
       </div>
-    </div>
+    </BaseSection>
   </div>
   
   <div v-else class="text-center py-12">
@@ -75,6 +49,9 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { getPurchaseDetails } from '../store/mockData'
 import { formatPrice } from '../utils/calculations'
+import BaseBackLink from '../components/ui/BaseBackLink.vue'
+import BaseSection from '../components/ui/BaseSection.vue'
+import PurchaseItemRow from '../components/domain/purchase/PurchaseItemRow.vue'
 
 const route = useRoute()
 const purchase = computed(() => getPurchaseDetails(route.params.id))
