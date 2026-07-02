@@ -1,18 +1,15 @@
 <template>
   <div class="space-y-6">
     <div class="space-y-4">
-      <router-link to="/reports" class="inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        レポート一覧へ戻る
-      </router-link>
+      <BaseBackLink to="/reports">レポート一覧へ戻る</BaseBackLink>
       
-      <div v-if="report" class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
-        <div class="border-b border-gray-100 dark:border-gray-700 pb-6 mb-8">
-          <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">{{ report.year }}年度 売上原価</h2>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Cost of Goods Sold (COGS)</p>
-        </div>
+      <BaseSection v-if="report">
+        <template #header>
+          <div class="flex-1">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">{{ report.year }}年度 売上原価</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Cost of Goods Sold (COGS)</p>
+          </div>
+        </template>
 
         <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 mb-8 items-stretch">
           <div class="bg-gray-50 dark:bg-gray-900/50 p-6 rounded-xl border border-gray-100 dark:border-gray-800 flex flex-col justify-center">
@@ -54,7 +51,7 @@
             <div class="text-5xl font-black text-white tracking-tight">¥{{ formatPrice(report.cogs) }}</div>
           </div>
         </div>
-      </div>
+      </BaseSection>
       
       <div v-else class="text-center py-12">
         <p class="text-gray-500 dark:text-gray-400">レポートが見つかりません。</p>
@@ -68,6 +65,9 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { getReportDetails } from '../store/mockData'
 import { formatPrice } from '../utils/calculations'
+
+import BaseBackLink from '../components/ui/BaseBackLink.vue'
+import BaseSection from '../components/ui/BaseSection.vue'
 
 const route = useRoute()
 const report = computed(() => {

@@ -1,0 +1,14 @@
+- [x] 共通UIコンポーネントの拡充
+  - [x] `src/components/ui/BaseBackLink.vue`
+  - [x] `src/components/ui/BaseSection.vue`
+  - [x] `src/components/ui/form/BaseInput.vue`
+  - [x] `src/components/ui/form/BaseSelect.vue`
+- [x] ドメイン特有部品の抽出
+  - [x] `src/components/domain/purchase/PurchaseItemRow.vue`
+  - [x] `src/components/domain/purchase/PurchaseItemFormRow.vue`
+- [x] ロジックの抽出（Composable）
+  - [x] `src/composables/usePurchaseForm.js`
+- [x] Viewコンポーネントのリファクタリング
+  - [x] `src/views/PurchaseDetail.vue`
+  - [x] `src/views/PurchaseCreate.vue`
+- [x] 分析ツールの実行とGitへのコミット・プッシュ
